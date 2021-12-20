@@ -9,7 +9,7 @@ public class Movement : MonoBehaviour
     private bool moveLeft;
     private bool moveRight;
     private float horizontalMove;
-    public float speed = 5;
+    public float speed;
 
     void Start()
     {
