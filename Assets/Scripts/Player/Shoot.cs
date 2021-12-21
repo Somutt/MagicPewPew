@@ -10,7 +10,7 @@ public class Shoot : MonoBehaviour
     public float bulletSpeed;
     public float cooldown;
     private float nextFireTime;
-
+    
     void Update() {
         if (Input.touchCount > 0) {
             if (Input.GetTouch(0).phase == TouchPhase.Began) {
@@ -20,7 +20,7 @@ public class Shoot : MonoBehaviour
                 if(touchPosition.y > firePoint.position.y && Time.time >= nextFireTime) {
                 dir.Normalize();
                 GameObject bullet = Instantiate(projectile, firePoint.position, firePoint.rotation);
-                bullet.GetComponent<Rigidbody2D>().velocity = dir * bulletSpeed;
+                bullet.GetComponent<Rigidbody2D>().velocity = dir * bulletSpeed;  
                 nextFireTime = Time.time + cooldown;
                 }
             }
