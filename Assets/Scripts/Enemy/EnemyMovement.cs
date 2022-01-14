@@ -23,7 +23,7 @@ public class EnemyMovement : MonoBehaviour
     }
 
     private void MovementEnemy() {
-        if (transform.position.x <= -2.5 || transform.position.x >= 2.5) {
+        if (transform.position.x < -2.3 || transform.position.x > 2.3) {
             enemySpeed *= -1;
         }
     }

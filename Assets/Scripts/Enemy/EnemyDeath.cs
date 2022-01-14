@@ -13,6 +13,7 @@ public class EnemyDeath : MonoBehaviour
         
 
         if (other.CompareTag("projectile")) {
+            Score.instance.AddPoints(3);
             Destroy(other.gameObject);
             health--;
 
