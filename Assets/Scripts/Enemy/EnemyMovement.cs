@@ -7,8 +7,6 @@ public class EnemyMovement : MonoBehaviour
     
     public float enemySpeed;
     private Rigidbody2D rb;
-    public float changeDirectionTime;
-    private float nextDirectionChange;
 
     void Start()
     {
@@ -25,8 +23,7 @@ public class EnemyMovement : MonoBehaviour
     }
 
     private void MovementEnemy() {
-        if (Time.time >= nextDirectionChange) {
-            nextDirectionChange = Time.time + changeDirectionTime;
+        if (transform.position.x <= -2.5 || transform.position.x >= 2.5) {
             enemySpeed *= -1;
         }
     }
