@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shoot : MonoBehaviour
+public class ShootingSystem : MonoBehaviour
 {
 
     public Transform firePoint;
@@ -18,12 +18,23 @@ public class Shoot : MonoBehaviour
                 Vector2 dir = touchPosition - (new Vector2(transform.position.x, transform.position.y));
                 
                 if(touchPosition.y > firePoint.position.y && Time.time >= nextFireTime) {
-                dir.Normalize();
-                GameObject bullet = Instantiate(projectile, firePoint.position, firePoint.rotation);
-                bullet.GetComponent<Rigidbody2D>().velocity = dir * bulletSpeed;  
-                nextFireTime = Time.time + cooldown;
+                Pew(dir);
                 }
             }
         }
+
+        if(Input.GetKeyDown("p"))
+        {
+            Vector2 newDir = new Vector2(0f, 1f);
+            Pew(newDir);
+        }
+    }
+
+    void Pew(Vector2 dir)
+    {
+        dir.Normalize();
+        GameObject bullet = Instantiate(projectile, firePoint.position, firePoint.rotation);
+        bullet.GetComponent<Rigidbody2D>().velocity = dir * bulletSpeed;  
+        nextFireTime = Time.time + cooldown;
     }
 }

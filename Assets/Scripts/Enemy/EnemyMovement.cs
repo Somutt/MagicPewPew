@@ -5,27 +5,29 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     
-    public float enemySpeed;
-    private Rigidbody2D rb;
+    private GameObject gameManager;
+    private GridMovement movementScript;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        gameManager = GameObject.Find("Game Manager");
+        movementScript = gameManager.GetComponent<GridMovement>();
     }
 
     void Update()
     {
-        MovementEnemy();
-    }
-
-    private void FixedUpdate() {
-        rb.velocity = new Vector2(enemySpeed, rb.velocity.y);
-    }
-
-    private void MovementEnemy() {
-        if ((transform.position.x < -2.3 && enemySpeed < 0) || (transform.position.x > 2.3 && enemySpeed > 0)) {
-            enemySpeed *= -1;
+        /*ENEMY MOVEMENT*/
+        if(Input.GetKeyDown("j")) //Goes to Pos1 when J is pressed
+        {
+            movementScript.MoveEnemy(1);
+        }else if(Input.GetKeyDown("k")) //Goes to Pos2 when K is pressed
+        {
+            movementScript.MoveEnemy(2);
+        }else if(Input.GetKeyDown("l")) //Goes to Pos3 when L is pressed
+        {
+            movementScript.MoveEnemy(3);
         }
-    }
 
+
+    }
 }
