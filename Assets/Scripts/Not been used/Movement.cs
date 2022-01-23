@@ -55,5 +55,4 @@ public class Movement : MonoBehaviour
             horizontalMove = 0;
         }
     }
-
 }
