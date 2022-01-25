@@ -18,19 +18,19 @@ public class ShootingSystem : MonoBehaviour
                 Vector2 dir = touchPosition - (new Vector2(transform.position.x, transform.position.y));
                 
                 if(touchPosition.y > firePoint.position.y && Time.time >= nextFireTime) {
-                Pew(dir);
+                Shoot(dir);
                 }
             }
         }
 
-        if(Input.GetKeyDown("p"))
+        if(Input.GetKeyDown("p") && Time.time >= nextFireTime)
         {
             Vector2 newDir = new Vector2(0f, 1f);
-            Pew(newDir);
+            Shoot(newDir);
         }
     }
 
-    void Pew(Vector2 dir)
+    void Shoot(Vector2 dir)
     {
         dir.Normalize();
         GameObject bullet = Instantiate(projectile, firePoint.position, firePoint.rotation);
