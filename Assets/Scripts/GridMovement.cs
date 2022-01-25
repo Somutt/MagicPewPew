@@ -7,6 +7,7 @@ public class GridMovement : MonoBehaviour
     private GameObject player;
     private GameObject enemy;
     private Vector3 pPos1, pPos2, pPos3, ePos1, ePos2, ePos3;
+    public GameObject movementPoint;
     void Start()
     {
         //Search for the Player and Enemy GO
@@ -26,6 +27,14 @@ public class GridMovement : MonoBehaviour
         ePos1 = new Vector3(-widthThird,  heightThird-1f);
         ePos2 = new Vector3(          0,  heightThird-1f);
         ePos3 = new Vector3( widthThird,  heightThird-1f);
+
+        //Instantiate the Movement Points
+        Instantiate(movementPoint, ePos1, Quaternion.identity);
+        Instantiate(movementPoint, ePos2, Quaternion.identity);
+        Instantiate(movementPoint, ePos3, Quaternion.identity);
+        Instantiate(movementPoint, pPos1, Quaternion.identity);
+        Instantiate(movementPoint, pPos2, Quaternion.identity);
+        Instantiate(movementPoint, pPos3, Quaternion.identity);
 
         //Player and Enemy start in the middle
         //of the screen (aka middle position);
